@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Main {
@@ -10,7 +11,11 @@ public class Main {
 
     public static void main(String[] args) {
         tasks.clear();
+        try {
         tasks = saverLoader.loadFileWhitExtension("default");
+        } catch (Exception ignoredException) {
+            System.out.println("default file dosent exsist making a new one");
+        }
         if (args.length > 0 && Objects.equals(args[0], "console")) {
             Main.OutIn();
         } else {
